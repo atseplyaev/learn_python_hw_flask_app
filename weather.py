@@ -8,6 +8,10 @@ def weather_by_city(city_name):
         "units": "metric",
         "APPID": get_param("weather_api", "APPID")
     }
-    result = requests.get(url, params=params)
-    return result.json()
+    try:
+        result = requests.get(url, params=params)
+        result.raise_for_status()
+        return result.json()
 
+    except (requests.RequestException, ValueError):
+        return False
