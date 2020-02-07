@@ -1,6 +1,6 @@
 from flask import Flask, render_template
-from weather import weather_by_city
-from news import get_python_news
+from webapp.weather import weather_by_city
+from webapp.news import get_python_news
 
 app = Flask(__name__)
 

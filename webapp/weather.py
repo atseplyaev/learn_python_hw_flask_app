@@ -1,5 +1,5 @@
 import requests
-from utils import get_param
+from webapp.utils import get_param
 
 
 def weather_by_city(city_name: str):
