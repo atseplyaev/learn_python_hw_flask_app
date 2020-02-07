@@ -22,3 +22,4 @@ def get_param(section, name):
     config.read(path)
     value = config.get(section, name)
     return value
+
