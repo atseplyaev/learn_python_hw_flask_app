@@ -1,5 +1,5 @@
 import requests
-from utils import get_param
+from flask import current_app
 
 
 def weather_by_city(city_name: str):
@@ -12,7 +12,7 @@ def weather_by_city(city_name: str):
     params = {
         "q": city_name,
         "units": "metric",
-        "APPID": get_param("weather_api", "APPID")
+        "APPID":  current_app.config["WEATHER_API_KEY"]
     }
     try:
         result = requests.get(url, params=params)

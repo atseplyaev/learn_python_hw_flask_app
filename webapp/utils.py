@@ -1,6 +1,7 @@
 import os
 import configparser
 
+
 def get_param(section, name):
     """
     Возращает значение параметра "name" из секции "section"
@@ -22,4 +23,3 @@ def get_param(section, name):
     config.read(path)
     value = config.get(section, name)
     return value
-
