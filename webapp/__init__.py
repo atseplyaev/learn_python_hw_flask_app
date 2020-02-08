@@ -13,7 +13,7 @@ def create_app():
     def hello():
         title = "Новости Python"
         weather = weather_by_city(app.config["WEATHER_DEFAULT_CITY"])
-        news = get_python_news()
+        news = News.query.order_by(News.published.desc()).all()
         return render_template('index.html', page_title=title, weather=weather, news=news)
 
     return app
