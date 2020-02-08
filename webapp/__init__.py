@@ -4,17 +4,18 @@ from webapp.news import get_python_news
 from webapp.model import db, News
 from webapp.forms import LoginForm
 
+
 def create_app():
     app = Flask(__name__)
-    app.config.from_pyfile('config.py')
+    app.config.from_pyfile("config.py")
     db.init_app(app)
 
-    @app.route("/z")
+    @app.route("/")
     def hello():
         title = "Новости Python"
         weather = weather_by_city(app.config["WEATHER_DEFAULT_CITY"])
         news = News.query.order_by(News.published.desc()).all()
-        return render_template('index.html', page_title=title, weather=weather, news=news)
+        return render_template("index.html", page_title=title, weather=weather, news=news)
 
     @app.route("/login")
     def login():
@@ -25,6 +26,6 @@ def create_app():
     return app
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = create_app()
     app.run()

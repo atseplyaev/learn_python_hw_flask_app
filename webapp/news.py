@@ -28,16 +28,16 @@ def get_python_news():
     if not html:
         return False
 
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, "html.parser")
 
     all_news = soup.find("ul", {"class": "list-recent-posts"}).findAll("li")
     for news in all_news:
-        title = news.find('a').text
-        url = news.find('a').get('href')
-        published = news.find('time').text
+        title = news.find("a").text
+        url = news.find("a").get("href")
+        published = news.find("time").text
 
         try:
-            published = datetime.strptime(published, '%Y-%m-%d')
+            published = datetime.strptime(published, "%Y-%m-%d")
         except (ValueError):
             published = datetime.now()
 
