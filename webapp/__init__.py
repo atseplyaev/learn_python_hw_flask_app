@@ -46,6 +46,12 @@ def create_app():
         flash("Неправильное имя или парооль")
         return redirect(url_for("login"))
 
+    @app.route("/logout")
+    def logout():
+        logout_user()
+        flash("Вы разлогинились")
+        return redirect(url_for("index"))
+
     return app
 
 
