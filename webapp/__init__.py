@@ -29,6 +29,9 @@ def create_app():
 
     @app.route("/login")
     def login():
+        if current_user.is_authenticated:
+            return redirect(url_for("index"))
+
         title = "Авторизация"
         login_form = LoginForm()
         return render_template("login.html", page_title=title, form=login_form)
@@ -51,6 +54,14 @@ def create_app():
         logout_user()
         flash("Вы разлогинились")
         return redirect(url_for("index"))
+
+    @app.route("/admin")
+    @login_required
+    def admin_index():
+        if current_user.is_admin:
+            return "Привет админ"
+
+        return "Ты не админ"
 
     return app
 
