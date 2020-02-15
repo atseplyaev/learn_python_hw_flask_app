@@ -1,10 +1,11 @@
-from flask import Blueprint
-from flask_login import current_user, login_required
+from flask import Blueprint, render_template
+from flask_login import current_user
+from webapp.user.decorators import admin_required
 bp = Blueprint("admin", __name__, url_prefix="/admin")
 
 
-@bp.route("/admin")
-@login_required
+@bp.route("/")
+@admin_required
 def admin_index():
     if current_user.is_admin:
         return "Привет админ"
