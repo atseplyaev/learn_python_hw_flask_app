@@ -7,12 +7,13 @@ from webapp.news.views import bp as news_bp
 from webapp.admin.views import bp as admin_bp
 
 from flask_login import LoginManager
-
+from flask_migrate import Migrate
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile("config.py")
     db.init_app(app)
+    migrate = Migrate(app, db)
 
     login_manager = LoginManager()
     login_manager.init_app(app)
