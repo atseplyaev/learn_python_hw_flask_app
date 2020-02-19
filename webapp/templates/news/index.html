@@ -12,7 +12,7 @@
             {% endif %}
         {% endwith %}
         {% for new in news %}
-        <h3><a href="{{ new.url }}">{{ new.title }}</a></h3>
+        <h3><a href="{{ url_for('news.single_news', news_id=new.id) }}">{{ new.title }}</a></h3>
         <p>{{ new.published.strftime("%Y-%m-%d") }}</p>
         {% endfor %}
     </div>

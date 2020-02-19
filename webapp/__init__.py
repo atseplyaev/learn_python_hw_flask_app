@@ -12,6 +12,7 @@ from flask_migrate import Migrate
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile("config.py")
+    app._static_folder = "templates/static"
     db.init_app(app)
     migrate = Migrate(app, db)
 
